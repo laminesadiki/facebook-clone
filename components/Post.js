@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ChatAltIcon, ShareIcon, ThumbUpIcon } from "@heroicons/react/outline"
+import { ChatAltIcon, ShareIcon, ThumbUpIcon } from "@heroicons/react/outline";
 
 function Post({ name, message, email, postImage, image, timestamp }) {
   return (
@@ -25,7 +25,12 @@ function Post({ name, message, email, postImage, image, timestamp }) {
       </div>
       {postImage && (
         <div className="relative h-56 md:h-96 bg-white">
-          <img src={postImage} className="object-contain h-56 md:h-96" />
+          <Image
+            src={postImage}
+            unoptimized={process.env.ENVIRONMENT !== "PRODUCTION"}
+            objectFit="contain"
+            layout="fill"
+          />
         </div>
       )}
 
@@ -37,7 +42,7 @@ function Post({ name, message, email, postImage, image, timestamp }) {
         </div>
 
         <div className="inputIcon rounded-none">
-          <ChatAltIcon className="h-4"/>
+          <ChatAltIcon className="h-4" />
           <p className="text-xs sm:text-base">Comment</p>
         </div>
 
