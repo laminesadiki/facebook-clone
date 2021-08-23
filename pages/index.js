@@ -7,7 +7,7 @@ import Sidebar from '../components/Sidebar';
 import Widgets from '../components/Widgets';
 import { db } from '../firebase';
 
-export default function Home({session}) {
+export default function Home({session, posts}) {
   if (!session) return <Login />;
   return (
     <div className="h-screen bg-gray-100 overflow-hidden">
@@ -20,7 +20,7 @@ export default function Home({session}) {
          {/* Sidebar */}
          <Sidebar />
          {/* Feed */}
-         <Feed />
+         <Feed posts={posts} />
          <Widgets />
       </main>
     </div>
