@@ -29,6 +29,7 @@ export default function Home({session, posts}) {
 
 
 export async function getServerSideProps(context) {
+// export async function getStaticProps (context) {
   //Get the user
   const session = await getSession(context);
   const posts = await db.collection("posts").orderBy("timestamp","desc").get();
